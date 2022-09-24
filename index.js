@@ -78,8 +78,8 @@ app.post(`/comments`, async function (req, res) {
             })
             webhookClient.send({
                 embeds: [new EmbedBuilder()
-                    .setTitle(`Log Sending Comments To Al-Eslam`)
-                    .setURL(`https://www.aleslam.ml/comments`)
+                    .setTitle(`Log Sending Comments To Islam`)
+                    .setURL(`https://www.islam.ml/comments`)
                     .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.msg}\n\nError :\n\`\`\`${err}\`\`\``)
                 ]
             });
@@ -101,8 +101,8 @@ app.post(`/comments`, async function (req, res) {
             })
             webhookClient.send({
                 embeds: [new EmbedBuilder()
-                    .setTitle(`Log Sending Comments To Al-Eslam`)
-                    .setURL(`https://www.aleslam.ml/comments`)
+                    .setTitle(`Log Sending Comments To Islam`)
+                    .setURL(`https://www.islam.ml/comments`)
                     .setDescription(`حالة الإرسال : تم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.msg}`)
                 ]
             });
@@ -114,8 +114,8 @@ app.post(`/comments`, async function (req, res) {
             })
             webhookClient.send({
                 embeds: [new EmbedBuilder()
-                    .setTitle(`Log Sending Comments To Al-Eslam`)
-                    .setURL(`https://www.aleslam.ml/comments`)
+                    .setTitle(`Log Sending Comments To Islam`)
+                    .setURL(`https://www.islam.ml/comments`)
                     .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.msg}\n\nError :\n\`\`\`البريد الإلكتروني موجود مسبقاً\`\`\``)
                 ]
             });
@@ -125,5 +125,5 @@ app.post(`/comments`, async function (req, res) {
 
 
 app.listen(8080, () => {
-    console.log(`Al Eslam web is ready!`)
+    console.log(`Islam site is ready!`)
 })
