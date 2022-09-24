@@ -1,0 +1,82 @@
+<div class="sidebar close">
+<div class="clsi">
+<a>
+<i class="fad fa-bars fa-menu" aria-hidden="true"></i>
+</a>
+</div>
+<div class="logo-details">
+<a href="/"><img class="bx bxl-c-plus-plus" src="../img/rt.png" alt="Royal Time Icon"></a>
+<span class="logo_name">Royal Time</span>
+</div>
+<ul class="nav-links">
+<% if(user) { %>
+  <li>
+    <div class="iocn-link">
+    <a>
+    <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
+    <span class="link_name">Dashboard</span>
+    </a>
+    <i class="fad fa-angle-down arrow" aria-hidden="true"></i>
+    </div>
+    <ul class="sub-menu">
+    <li><a class="link_name">Dashboard</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/friends">Friend List</a></li>
+    <li><a href="/support-apply">Support Apply</a></li>
+    </ul>
+    </li>
+<%}%>
+  <li>
+<div class="iocn-link">
+<a>
+<i class="fa-duotone fa-ranking-star" aria-hidden="true"></i>
+<span class="link_name">Top List</span>
+</a>
+<i class="fad fa-angle-down arrow" aria-hidden="true"></i>
+</div>
+<ul class="sub-menu">
+<li><a class="link_name">Top List</a></li>
+<li><a href="/topMoney">Top Money</a></li>
+<li><a href="/topGameCoins">Top Game Coins</a></li>
+</ul>
+</li>
+<li>
+  <a href="/join-server">
+  <i class="fa-duotone fa-gamepad-modern" aria-hidden="true"></i>
+  <span class="link_name">Join Server</span>
+  </a>
+  <ul class="sub-menu blank">
+  <li><a class="link_name">Join Server</a></li>
+  </ul>
+  </li>
+<% if(!user) { %>
+  <li>
+<a href="/login">
+<i class="fad fa-right-to-bracket" aria-hidden="true"></i>
+<span class="link_name">Login</span>
+</a>
+<ul class="sub-menu blank">
+<li><a class="link_name">Login</a></li>
+</ul>
+</li>
+<%} else {%>
+<li>
+<div class="profile-details">
+<div class="profile-content">
+<img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>?size=2048" alt="profileImg">
+</div>
+<div class="name-user-discord">
+<div class="profile_name">
+<%= user.username %>
+</div>
+<div class="discriminator-discord">#<%= user.discriminator %>
+</div>
+</div>
+<a href="/logout">
+<i class="fad fa-right-from-bracket" aria-hidden="true"></i>
+</a>
+</div>
+</li>
+  <%}%>
+</ul>
+</div>

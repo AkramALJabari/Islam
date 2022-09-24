@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<h2 id="title" class="title">You must connect your Discord account with our server on MTA</h2>
+<a class="main-btn" onclick="document.getElementById('id01').style.display='block'">Connect Account</a>
+
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px;background-color: #2C2F33;">
+        <div class="w3-center">
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal" style="color:#fff;">&times;</span>
+        </div>
+        <form class="w3-container" action="/connectAccount" method="POST" style="padding: 32px 16px;color:#fff;">
+            <div class="w3-section">
+                <label><b>Verify</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="-verify [Username Account] [Verify Code]" name="verify" required>
+                <button class="main-btn" type="submit" style="margin-bottom: 0px;margin-top: 25px;border: none;">Connect Account</button>
+            </div>
+        </form>
+    </div>
+</div>
