@@ -1,0 +1,96 @@
+section{
+display:flex;
+flex-direction:column;
+align-items:center
+}
+.cards{
+background-color:#fff
+}
+.social-icons a{
+color:#fff;
+font-size:1.7em;
+padding-right:30px
+}
+.transfer{
+align-items:center
+}
+.btn-close{
+color:#cacaca91;
+position:absolute;
+top:0;
+right:5px;
+font-size:36px;
+margin-left:35px
+}
+.active{
+color:#5865f2;
+text-transform:uppercase
+}
+.dela3{
+size:10px
+}
+.content{
+display:flex;
+justify-content:center;
+flex-direction:row;
+flex-wrap:wrap
+}
+.card{
+background-color:#6fafff;
+width:23em;
+height:10em;
+box-shadow:0 5px 25px rgba(1 1 1/15%);
+border-radius:40px;
+transition:.7s ease;
+padding:25px;
+margin:15px;
+background-image:url(/img/cardsBanner.png);
+background-size:cover;
+}
+form button{
+color:#fff;
+background-color:#5865f2;
+font-size:1.4em;
+font-weight:500;
+padding:.2em .5em;
+letter-spacing:.5px;
+border-radius:15px;
+transition:.4s ease;
+cursor:pointer
+}
+button:hover{
+background-color:#61acff
+}
+.transfer{
+width:40em;
+min-height:20em;
+height:fit-content
+}
+.transferform div{
+padding:20px;
+font-size:1.3em;
+font-weight:500
+}
+.card h4{
+font-size:2.2em;
+font-weight:800
+}
+.info{
+font-size:2.2em;
+font-weight:800;
+color:#fff;
+text-align:center;
+margin-bottom:25px
+}
+.info h5{
+font-size:1em;
+font-weight:300
+}
+.card:hover{
+transform:scale(1.1)
+}
+.card .icon{
+color:#fff;
+font-size:4em;
+text-align:right
+}

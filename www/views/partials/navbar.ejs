@@ -1,82 +1,50 @@
 <div class="sidebar close">
-<div class="clsi">
-<a>
-<i class="fad fa-bars fa-menu" aria-hidden="true"></i>
-</a>
-</div>
-<div class="logo-details">
-<a href="/"><img class="bx bxl-c-plus-plus" src="../img/rt.png" alt="Royal Time Icon"></a>
-<span class="logo_name">Royal Time</span>
-</div>
-<ul class="nav-links">
-<% if(user) { %>
-  <li>
-    <div class="iocn-link">
+  <div class="clsi">
     <a>
-    <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
-    <span class="link_name">Dashboard</span>
+      <i class="fad fa-bars fa-menu" aria-hidden="true"></i>
     </a>
-    <i class="fad fa-angle-down arrow" aria-hidden="true"></i>
-    </div>
-    <ul class="sub-menu">
-    <li><a class="link_name">Dashboard</a></li>
-    <li><a href="/dashboard">Dashboard</a></li>
-    <li><a href="/friends">Friend List</a></li>
-    <li><a href="/support-apply">Support Apply</a></li>
-    </ul>
+  </div>
+  <div class="logo-details">
+    <a href="/"><img class="bx bxl-c-plus-plus" src="../img/Islam.png" alt="Islam Icon"></a>
+    <span class="logo_name">Islam site</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class="fa-duotone fa-ranking-star" aria-hidden="true"></i>
+          <span class="link_name">Top List</span>
+        </a>
+        <i class="fad fa-angle-down arrow" aria-hidden="true"></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name">Top List</a></li>
+        <li><a href="/topMoney">Top Money</a></li>
+        <li><a href="/topGameCoins">Top Game Coins</a></li>
+      </ul>
     </li>
-<%}%>
-  <li>
-<div class="iocn-link">
-<a>
-<i class="fa-duotone fa-ranking-star" aria-hidden="true"></i>
-<span class="link_name">Top List</span>
-</a>
-<i class="fad fa-angle-down arrow" aria-hidden="true"></i>
-</div>
-<ul class="sub-menu">
-<li><a class="link_name">Top List</a></li>
-<li><a href="/topMoney">Top Money</a></li>
-<li><a href="/topGameCoins">Top Game Coins</a></li>
-</ul>
-</li>
-<li>
-  <a href="/join-server">
-  <i class="fa-duotone fa-gamepad-modern" aria-hidden="true"></i>
-  <span class="link_name">Join Server</span>
-  </a>
-  <ul class="sub-menu blank">
-  <li><a class="link_name">Join Server</a></li>
+    <li>
+      <a href="/join-server">
+        <i class="fa-duotone fa-gamepad-modern" aria-hidden="true"></i>
+        <span class="link_name">Join Server</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name">Join Server</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="https://web.facebook.com/Akram.M.AlJabari" target="_blank"><div class="profile-details">
+        <div class="profile-content">
+          <img
+            src="https://scontent.famm2-3.fna.fbcdn.net/v/t39.30808-6/306948847_3276521262635361_6637147941973238610_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHHXrJBz2tgcNkRmbAwAmewUm5Lo_hV8TRSbkuj-FXxNGNerLz_m4B7_yVs8vzcEP4HQfdSoVSLQY5r0e0j5Yqe&_nc_ohc=spLD5WbwsbsAX-rl_FW&_nc_zt=23&_nc_ht=scontent.famm2-3.fna&oh=00_AT9h7Sf7uLKWrgAD8T_LlTwJrqoeYRQmZyZ1i5jx8qaVUw&oe=6334443E"
+            alt="owner_img">
+        </div>
+        <div class="owner">
+          <div class="owner_name">Akram AlJabari</div>
+          <div class="role-user">Site Owner 👑</div>
+        </div>
+      </div>
+      </a>
+    </li>
   </ul>
-  </li>
-<% if(!user) { %>
-  <li>
-<a href="/login">
-<i class="fad fa-right-to-bracket" aria-hidden="true"></i>
-<span class="link_name">Login</span>
-</a>
-<ul class="sub-menu blank">
-<li><a class="link_name">Login</a></li>
-</ul>
-</li>
-<%} else {%>
-<li>
-<div class="profile-details">
-<div class="profile-content">
-<img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>?size=2048" alt="profileImg">
-</div>
-<div class="name-user-discord">
-<div class="profile_name">
-<%= user.username %>
-</div>
-<div class="discriminator-discord">#<%= user.discriminator %>
-</div>
-</div>
-<a href="/logout">
-<i class="fad fa-right-from-bracket" aria-hidden="true"></i>
-</a>
-</div>
-</li>
-  <%}%>
-</ul>
 </div>

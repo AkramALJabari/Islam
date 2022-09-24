@@ -1,72 +1,56 @@
 <div id="contextMenu" class="context-menu" style="display: none">
   <ul class="menu">
-    <% if(!user) { %>
-      <li>
-      <a href="/login">
-        <i class="fad fa-right-to-bracket"></i>
-        Login
+    <li>
+      <a href="/facebook" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+        صفحتنا على فيسبوك
       </a>
     </li>
-      <%} else {%>
-        <li>
-          <a href="/dashboard">
-            <i class="fa-solid fa-circle-user"></i>
-            Dashboard
-            </a>
-          </li>
-        <%}%>
-          <li>
-            <a href="/join-server">
-              <i class="fa-duotone fa-gamepad-modern"></i>
-              Join Server MTA
-              </a>
-            </li>
-          <li>
-            <a href="/support">
-              <i class="fa-brands fa-discord"></i>
-              Discord Server
-              </a>
-            </li>
-          </ul>
+  </ul>
 </div>
 
 <style>
   ul {
-  list-style: none;
-}
-.context-menu { 
-  position: absolute; 
-} 
-.menu {
-  display: flex;
-  flex-direction: column;
-  background-color: #b5000c;
-  border-radius: 10px;
-  box-shadow: 0 5px 25px rgb(1 1 1 / 15%);
-  padding: 10px 0;
-  margin-left: -80px;
-}
-.menu > li > a {
-  font: inherit;
-  border: 0;
-  padding: 10px 30px 10px 15px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  text-decoration: unset;
-  color: white;
-  font-weight: 500;
-  transition: 0.5s linear;
-  -webkit-transition: 0.5s linear;
-  -moz-transition: 0.5s linear;
-  -ms-transition: 0.5s linear;
-  -o-transition: 0.5s linear;
-}
-.menu > li > a:hover {
-  background: #7a0008;
-}
-.menu > li > a > i {
-padding-right: 10px;
-}
-  </style>
+    list-style: none;
+  }
+
+  .context-menu {
+    position: absolute;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    background-color: #b56400;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 15%);
+    padding: 10px 0;
+    margin-left: -80px;
+  }
+
+  .menu>li>a {
+    font: inherit;
+    border: 0;
+    padding: 10px 30px 10px 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: unset;
+    color: white;
+    font-weight: 500;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+  }
+
+  .menu>li>a:hover {
+    background: #7a4400;
+  }
+
+  .menu>li>a>i {
+    padding-right: 10px;
+  }
+</style>

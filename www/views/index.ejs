@@ -1,112 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Royal Time Roleplay</title>
-    <link rel="stylesheet" href="../css/home.css">
-    <%- include('./partials/head.ejs') %>
-      <style>
-        .lastupdate {
-          max-height: 400px;
-          overflow: auto;
-          display: flex;
-          flex-direction: column;
-          }
-        #inner {
-          display: flex;
-          flex-direction: column-reverse;
-          flex-grow: 1;
-          }
-        .lastupdate #inner div{
-          background-color: #b5000c;
-          color: white;
-          font-weight: 900;
-          border-radius: 5px;
-          padding: 3px 15px 5px;
-          box-shadow: 0 0 1px rgb(0 0 0 / 12%), 0 0 1px rgb(0 0 0 / 24%);
-          font-size: 15px;
-          margin-bottom: 5px;
-          }
-        </style>
-      </head>
-  <body onload="myFunction()">
-<%- include('./partials/loading.ejs') %>
-  <div style="display:none;" id="myDiv" class="animate-bottom">
-<%- include('./partials/menu.ejs') %>
-<%- include('./partials/navbar.ejs') %>
-<section class="main nbw">
-<div>
-<h2><span>Royal Time Roleplay</span></h2>
-<h3>Royal Time server for role play.<br>Exclusive maps and mods, sabotage-free gameplay.
-</h3>
-  <% if(!user) { %>
-    <a href="/login" class="main-btn">Login</a>
-<%} else {%>
-  <a href="/dashboard" class="main-btn">Go to Dashboard</a>
-<%}%>
-</div>
-</section>
-<section class="cards nbw" id="services" style="padding-bottom: 50px;">
-<div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
-<div class="card">
-<div class="icon">
-<i class="fa-duotone fa-signal-bars-good" aria-hidden="true"></i>
-</div>
-<div class="info">
-<h3>Server Info :</h3>
-  <% if(error){ %>
-    <p>Server is offline 🔴</p>
-    <% }else{ %>
-      <% if(stats){ %>
-      <p>Server Name : <%= stats["SERVERINFO"]["Server Name"] %><br>
-        State : <%= stats["SERVERINFO"]['State'] == 0 ? "Offline 🔴" : "Online 🟢" %><br>
-        Adress : <a href="/join-server"><%= stats["SERVERINFO"]["Address"].replace("https://www.game-state.com/",'mtasa://') %></a><br>
-        Players : <%= stats["SERVERINFO"]["Players"] %><br>
-        Game Mode : <%= stats["SERVERINFO"]["Game Mode"] %><br>
-        Map Name : <%= stats["SERVERINFO"]["Map Name"] %><br>
-        Password : <%= stats["SERVERVARIABLES"]["password"] == 0 ? "❌" : "✅" %><br>
-        Port : <%= stats["SERVERVARIABLES"]["port"] %><br>
-        Game Version : <%= stats["SERVERVARIABLES"]["version"] %>
-          </p>
-          <% } %>
-          <% } %>
-</div>
-</div>
-<div class="card">
-<div class="icon">
-<i class="fa-duotone fa-newspaper" aria-hidden="true"></i>
-</div>
-<div class="info">
-<h3>Latest updates :</h3>
-  <div class="lastupdate">
-    <div id="inner">
-    <% updates.forEach(updates => { %>
-      <div><span><%= updates %></span></div>
-      <% }) %>
-      </div>
-  </div>
-</div>
-</div>
-<div class="card">
-<div class="icon">
-<i class="fa-duotone fa-gamepad-modern" aria-hidden="true"></i>
-</div>
-<div class="info">
-<h3>How to Play ?</h3>
-<p>
-  1. Download <a target="_blank" href="https://www.wifi4games.com/pc_games/GTA_SAN_ANDREAS.html">Grand Theft Auto: San Andreas</a>
-</p>
-<p>
-  2. Download <a target="_blank" href="https://multitheftauto.com/">Multi Theft Auto: San Andreas</a>
-</p>
-<p>
-  3. You are now ready to enter <a href="/join-server">Royal Time For Roleplay</a>
-</p>
-</div>
-</div>
-</div>
-</section>
-<%- include('./partials/footer.ejs') %>
-<script src="./js/main.js" type="text/javascript"></script>
-</div>
+
+<head>
+  <title>Islam site</title>
+  <link rel="stylesheet" href="../css/home.css">
+  <%- include('./partials/head.ejs') %>
+    <style>
+      .lastupdate {
+        max-height: 400px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #inner {
+        display: flex;
+        flex-direction: column-reverse;
+        flex-grow: 1;
+      }
+
+      .lastupdate #inner div {
+        background-color: #b56400;
+        color: white;
+        font-weight: 900;
+        border-radius: 5px;
+        padding: 3px 15px 5px;
+        box-shadow: 0 0 1px rgb(0 0 0 / 12%), 0 0 1px rgb(0 0 0 / 24%);
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+    </style>
+</head>
+
+<body onload="myFunction()">
+  <%- include('./partials/loading.ejs') %>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+      <%- include('./partials/menu.ejs') %>
+        <%- include('./partials/navbar.ejs') %>
+          <section class="main nbw">
+            <div>
+              <h2><span>Royal Time Roleplay</span></h2>
+              <h3>Royal Time server for role play.<br>Exclusive maps and mods, sabotage-free gameplay.
+              </h3>
+              <a href="/login" class="main-btn">Login</a>
+            </div>
+          </section>
+          <section class="cards nbw" id="services" style="padding-bottom: 50px;">
+            <div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
+              <div class="card">
+                <div class="icon">
+                  <i class="fa-duotone fa-signal-bars-good" aria-hidden="true"></i>
+                </div>
+                <div class="info">
+                  <h3>Server Info :</h3>
+
+                </div>
+              </div>
+              <div class="card">
+                <div class="icon">
+                  <i class="fa-duotone fa-newspaper" aria-hidden="true"></i>
+                </div>
+                <div class="info">
+                  <h3>Latest updates :</h3>
+                  <div class="lastupdate">
+                    <div id="inner">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="icon">
+                  <i class="fa-duotone fa-gamepad-modern" aria-hidden="true"></i>
+                </div>
+                <div class="info">
+                  <h3>How to Play ?</h3>
+                  <p>
+                    1. Download <a target="_blank" href="https://www.wifi4games.com/pc_games/GTA_SAN_ANDREAS.html">Grand
+                      Theft Auto: San Andreas</a>
+                  </p>
+                  <p>
+                    2. Download <a target="_blank" href="https://multitheftauto.com/">Multi Theft Auto: San Andreas</a>
+                  </p>
+                  <p>
+                    3. You are now ready to enter <a href="/join-server">Royal Time For Roleplay</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <%- include('./partials/footer.ejs') %>
+            <script src="./js/main.js" type="text/javascript"></script>
+    </div>
 </body>
+
 </html>

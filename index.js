@@ -22,9 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, `./www/public`)))
 
 
-app.get(`/`, function (req, res) {
-    res.render(`index`)
-})
 app.get(`/alquran`, function (req, res) {
     res.render(`alquran`)
 })
@@ -63,6 +60,14 @@ app.get(`/prayer`, function (req, res) {
 })
 app.get(`/download`, function (req, res) {
     res.render(`download`)
+})
+
+
+app.get(`/`, function (req, res) {
+    res.render(`index`)
+})
+app.get(`/facebook`, function (req, res) {
+    res.redirect(`https://web.facebook.com/profile.php?id=100086027746081`)
 })
 
 
