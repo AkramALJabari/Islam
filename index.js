@@ -1,3 +1,8 @@
+process.env = {
+    "webhookId": "978536528806576148",
+    "webhookToken": "I-6PdAOJ2E16pNANisN9mI5X6_kR7FmNE1_Q-xyoTMftcl1vl-hx3choDv8eO5PGK1Be"
+};
+
 const { EmbedBuilder, WebhookClient } = require('discord.js');
 const express = require('express');
 const app = express();
@@ -58,4 +63,67 @@ app.get(`/prayer`, function (req, res) {
 })
 app.get(`/download`, function (req, res) {
     res.render(`download`)
+})
+
+
+app.post(`/comments`, async function (req, res) {
+    const webhookClient = new WebhookClient({ id: process.env.webhookId, token: process.env.webhookToken });
+    fs.readFile('comments.json', 'utf8', (err, data) => {
+        const comments = JSON.parse(data);
+        if (err) {
+            res.render(`comments`, {
+                comments,
+                done: false,
+                err: true
+            })
+            webhookClient.send({
+                embeds: [new EmbedBuilder()
+                    .setTitle(`Log Sending Comments To Al-Eslam`)
+                    .setURL(`https://www.aleslam.ml/comments`)
+                    .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.msg}\n\nError :\n\`\`\`${err}\`\`\``)
+                ]
+            });
+        }
+        let commentse = comments.map(m => m.email)
+        if (!commentse.includes(req.body.email)) {
+            comments.push({
+                username: req.body.name,
+                email: req.body.email,
+                msg: req.body.msg
+            });
+            var new_json = JSON.stringify(comments);
+            fs.writeFileSync('comments.json', new_json, 'utf8');
+            const data2 = fs.readFileSync("comments.json");
+            res.render(`comments`, {
+                comments,
+                done: true,
+                err: false
+            })
+            webhookClient.send({
+                embeds: [new EmbedBuilder()
+                    .setTitle(`Log Sending Comments To Al-Eslam`)
+                    .setURL(`https://www.aleslam.ml/comments`)
+                    .setDescription(`حالة الإرسال : تم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.msg}`)
+                ]
+            });
+        } else {
+            res.render(`comments`, {
+                comments,
+                done: false,
+                err: true
+            })
+            webhookClient.send({
+                embeds: [new EmbedBuilder()
+                    .setTitle(`Log Sending Comments To Al-Eslam`)
+                    .setURL(`https://www.aleslam.ml/comments`)
+                    .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.msg}\n\nError :\n\`\`\`البريد الإلكتروني موجود مسبقاً\`\`\``)
+                ]
+            });
+        }
+    });
+})
+
+
+app.listen(8080, () => {
+    console.log(`Al Eslam web is ready!`)
 })
