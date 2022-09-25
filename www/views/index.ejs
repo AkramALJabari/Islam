@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>موقع الإسلام</title>
-  <link rel="stylesheet" href="../css/home.css">
-  <%- include('./partials/head.ejs') %>
+  <head>
+    <title>موقع الإسلام</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <%- include('./partials/head.ejs') %>
     <style>
       .lastupdate {
         max-height: 400px;
@@ -42,93 +42,91 @@
         }
       }
     </style>
-</head>
+  </head>
 
-<body onload="myFunction()">
-  <%- include('./partials/loading.ejs') %>
+  <body onload="myFunction()">
+    <%- include('./partials/loading.ejs') %>
     <div style="display:none;" id="myDiv" class="animate-bottom">
       <% if(usernew) { %>
-        <div
-          style="background: #b56400;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: example;animation-duration: 6s;animation-fill-mode: forwards;">
-          <a>مرحباً بك بــموقع الإسلام</a>
-          <i class="fa-solid fa-hand-wave" aria-hidden="true"
-            style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
-          <a style="font-size: 12px;">يتم عرضها عند دخولك لأول مره للموقع</a>
+      <div
+        style="background: #b56400;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: example;animation-duration: 6s;animation-fill-mode: forwards;">
+        <a>مرحباً بك بــموقع الإسلام</a>
+        <i class="fa-solid fa-hand-wave" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+        <a style="font-size: 12px;">يتم عرضها عند دخولك لأول مره للموقع</a>
+      </div>
+      <% } %>
+      <%- include('./partials/menu.ejs') %>
+      <%- include('./partials/navbar.ejs') %>
+      <section class="main nbw">
+        <div>
+          <h2><span>موقع الإسلام</span></h2>
+          <h3>أوقات الصلاه ,قصص الأنبياء ,أحاديث نبويه شريفه ,سور من القرآن الكريم</h3>
+          <a href="/facebook" class="main-btn"><i class="fa-brands fa-facebook" aria-hidden="true"></i> صفحتنا
+            على فيسبوك</a>
         </div>
-        <% } %>
-          <%- include('./partials/menu.ejs') %>
-            <%- include('./partials/navbar.ejs') %>
-              <section class="main nbw">
-                <div>
-                  <h2><span>موقع الإسلام</span></h2>
-                  <h3>أوقات الصلاه ,قصص الأنبياء ,أحاديث نبويه شريفه ,سور من القرآن الكريم</h3>
-                  <a href="/facebook" class="main-btn"><i class="fa-brands fa-facebook" aria-hidden="true"></i> صفحتنا
-                    على فيسبوك</a>
+      </section>
+      <section class="cards nbw" id="services" style="padding-bottom: 50px;">
+        <div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
+          <div class="card">
+            <div class="icon">
+              <i class="fa-duotone fa-users-medical" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>عدد متسخدمين الموقع</h3>
+              <p id="counter"></p>
+              <div id="counter2" style="display: none;"><%= users_count %></div>
+              <script>
+                setTimeout(function () {
+                  let counts = setInterval(updated, 50);
+                  let upto = 0;
+                  function updated() {
+                    var count = document.getElementById("counter");
+                    var count2 = document.getElementById("counter2");
+                    count.innerHTML = ++upto + ` +`;
+                    if (upto === Number(count2.innerHTML) + 10) {
+                      clearInterval(counts);
+                    }
+                  }
+                }, 2500)
+              </script>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon">
+              <i class="fa-duotone fa-newspaper" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>آخر التحديثات</h3>
+              <div class="lastupdate">
+                <div id="inner">
+                  <% updates.forEach(updates=> { %>
+                  <div><%= updates %></div>
+                  <% }) %>
                 </div>
-              </section>
-              <section class="cards nbw" id="services" style="padding-bottom: 50px;">
-                <div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
-                  <div class="card">
-                    <div class="icon">
-                      <i class="fa-duotone fa-users-medical" aria-hidden="true"></i>
-                    </div>
-                    <div class="info">
-                      <h3>عدد متسخدمين الموقع</h3>
-                      <p id="counter"></p>
-                      <div id="counter2" style="display: none;">
-                        <%= users_count %>
-                      </div>
-                      <script>
-                        setTimeout(function () {
-                          let counts = setInterval(updated, 50);
-                          let upto = 0;
-                          function updated() {
-                            var count = document.getElementById("counter");
-                            var count2 = document.getElementById("counter2");
-                            count.innerHTML = ++upto + ` +`;
-                            if (upto === Number(count2.innerHTML) + 10) {
-                              clearInterval(counts);
-                            }
-                          }
-                        }, 2500)
-                      </script>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="icon">
-                      <i class="fa-duotone fa-newspaper" aria-hidden="true"></i>
-                    </div>
-                    <div class="info">
-                      <h3>آخر التحديثات</h3>
-                      <div class="lastupdate">
-                        <div id="inner">
-                          <% updates.forEach(updates=> { %>
-                            <div><%= updates %></div>
-                            <% }) %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="icon">
-                      <i class="fa-duotone fa-comments" aria-hidden="true"></i>
-                    </div>
-                    <div class="info">
-                      <h3>تعليقات المستخدمين</h3>
-                      <div class="lastupdate">
-                        <div id="inner">
-                          <% comments.forEach(comments=> { %>
-                            <div><%= comments.comment %></div>
-                            <% }) %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon">
+              <i class="fa-duotone fa-comments" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>تعليقات المستخدمين</h3>
+              <div class="lastupdate">
+                <div id="inner">
+                  <% comments.forEach(comments=> { %>
+                  <div><%= comments.comment %></div>
+                  <% }) %>
                 </div>
-              </section>
-              <%- include('./partials/footer.ejs') %>
-                <script src="./js/main.js" type="text/javascript"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%- include('./partials/footer.ejs') %>
+      <script src="./js/main.js" type="text/javascript"></script>
     </div>
-</body>
+  </body>
 
 </html>
