@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>موقع الإسلام | أركان الإسلام</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <%- include('./partials/head.ejs') %>
+  </head>
+
+  <body onload="myFunction()">
+    <%- include('./partials/loading.ejs') %>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+      <%- include('./partials/menu.ejs') %>
+      <%- include('./partials/navbar.ejs') %>
+      <section class="cards nbw" id="services" style="padding-bottom: 50px;">
+        <div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
+          <div class="card">
+            <div class="icon">
+              <i class="fa-duotone fa-book" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>أركان الإسلام</h3>
+              <p>الشهادتان *<br>إقامة الصلاه *<br>إيتاء الزكاة *<br>صوم رمضان *<br>حج البيت لمن إستطاع إليه سبيلا *</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="./js/main.js" type="text/javascript"></script>
+    </div>
+  </body>
+
+</html>

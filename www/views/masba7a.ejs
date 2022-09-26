@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>موقع الإسلام | مسبحه إلكترونيه</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <%- include('./partials/head.ejs') %>
+    <style>
+      @font-face {
+        font-family: 'digital-clock-font';
+        src: url('font/digital-7.regular.ttf');
+      }
+
+      .cont {
+        width: 300px;
+        height: 300px;
+        margin: 128px auto 0 auto;
+        transform: scale(1.5);
+      }
+
+      .cont>div {
+        margin: 10px auto;
+        position: relative;
+      }
+
+      .cont_up {
+        width: 150px;
+        height: 100px;
+        border-radius: 50px;
+        background: #b56400;
+        z-index: 1;
+      }
+
+      .cont_body {
+        position: relative;
+        width: 140px;
+        height: 150px;
+        background: #b56400;
+        top: -82px;
+      }
+
+      .cont_down {
+        position: relative;
+        width: 148px;
+        height: 90px;
+        border-radius: 50px;
+        background: #b56400;
+        z-index: 1;
+        top: -155px;
+      }
+
+      #screen {
+        position: relative;
+        width: 80%;
+        height: 60px;
+        margin-left: 14px;
+        top: 10px;
+        border-radius: 30px;
+        box-shadow: 0px 0px 8px .5px #000;
+        opacity: .9;
+        display: flex;
+        justify-content: center;
+      }
+
+      #display {
+        position: relative;
+        width: 75%;
+        border-radius: 10px;
+        height: 30px;
+        text-align: right;
+        line-height: 30px;
+        padding-right: 10px;
+        background: #959e97;
+        top: 15px;
+        box-shadow: inset 0px 0px 3px 0.5px #000;
+        font-size: 25px;
+        font-family: 'digital-clock-font';
+        color: #000000b5;
+        font-weight: 400;
+      }
+
+      #play,
+      #reset {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        box-shadow: 0px 0px 10px #000;
+        border: 1px solid #fff;
+        transition: 0.7s ease;
+      }
+
+      #reset:hover {
+        background-color: #7a4400;
+      }
+
+      #play:hover {
+        background-color: #7a4400;
+      }
+
+      #play {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        top: 90px;
+        left: 40px;
+      }
+
+      #reset {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        top: 63px;
+        left: 88px;
+        font-size: 8px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body onload="myFunction()">
+    <%- include('./partials/loading.ejs') %>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+      <%- include('./partials/menu.ejs') %>
+      <%- include('./partials/navbar.ejs') %>
+      <section class="cards nbw" id="services" style="padding-bottom: 50px;">
+        <div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
+          <div class="card">
+            <div class="icon">
+              <i class="fa-duotone fa-tablet-screen-button" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>مسبحه إلكترونيه</h3>
+              <div class="cont">
+                <div class="cont_up" id="col">
+                  <div id="screen">
+                    <p id="display">0</p>
+                  </div>
+                </div>
+                <div class="cont_body" id="col1">
+                  <a id="play" onclick="play()"></a>
+                  <a id="reset" onclick="reset()">Rest</a>
+                </div>
+                <div class="cont_down" id="col2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="./js/main.js" type="text/javascript"></script>
+      <script>
+        var i = 1;
+        function play() {
+          var x = document.getElementById("display");
+          if(x.innerHTML == 999999)return;
+          x.innerHTML = i;
+          i++;
+        }
+        function reset() {
+          var x = document.getElementById("display");
+          x.innerHTML = 0;
+          i = 1;
+        }
+      </script>
+    </div>
+  </body>
+
+</html>

@@ -66,12 +66,46 @@
         color: #000;
         font-weight: 900;
       }
+
+      @keyframes leftdiv {
+        0% {
+          left: -360px;
+        }
+
+        20% {
+          left: -40px;
+        }
+
+        80% {
+          left: -40px;
+        }
+
+        100% {
+          left: -360px;
+        }
+      }
     </style>
   </head>
 
   <body onload="myFunction()">
     <%- include('./partials/loading.ejs') %>
     <div style="display:none;" id="myDiv" class="animate-bottom">
+      <% if(done){ %>
+      <div
+        style="background: green;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
+        <a>تمت العمليه بنجاح</a>
+        <i class="fa-solid fa-badge-check" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      </div>
+      <% } %>
+      <% if(err){ %>
+      <div
+        style="background: red;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
+        <a>حصل خطأ اثناء تنفيذ العمليه</a>
+        <i class="fa-solid fa-seal-exclamation" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      </div>
+      <% } %>
       <%- include('./partials/menu.ejs') %>
       <%- include('./partials/navbar.ejs') %>
       <section class="cards nbw" id="services" style="padding-bottom: 50px;">
@@ -81,11 +115,11 @@
               <i class="fa-solid fa-comment-plus" aria-hidden="true"></i>
             </div>
             <div class="info">
-              <h3>تعليقاتك</h3>
+              <h3>إضافة تعليق</h3>
               <form action="/comments" method="POST">
                 <input type="text" name="name" placeholder="إسمك" required>
                 <input type="email" name="email" placeholder="البريد الإلكتروني" required>
-                <textarea name="msg" placeholder="التعليق" required></textarea>
+                <textarea name="comment" placeholder="التعليق" required></textarea>
                 <button class="main-btn" type="submit" style="width: 30%;margin: 8px 0;">إرسال</button>
               </form>
             </div>
@@ -95,11 +129,11 @@
               <i class="fa-duotone fa-comments" aria-hidden="true"></i>
             </div>
             <div class="info">
-              <h3>تعليقات المستخدمين</h3>
+              <h3>تعليقات المستخدمين (<%= comments.length %>)</h3>
               <div class="comments">
                 <div id="inner">
-                  <% comments.forEach(comments=> { %>
-                  <div><%= comments.comment %></div>
+                  <% comments.forEach(comment=> { %>
+                  <div><%= comment.user %> :<br><%= comment.comment %></div>
                   <% }) %>
                 </div>
               </div>

@@ -32,13 +32,21 @@
         word-wrap: break-word;
       }
 
-      @keyframes example {
-        from {
+      @keyframes leftdiv {
+        0% {
           left: -360px;
         }
 
-        to {
+        20% {
           left: -40px;
+        }
+
+        80% {
+          left: -40px;
+        }
+
+        100% {
+          left: -360px;
         }
       }
     </style>
@@ -49,11 +57,10 @@
     <div style="display:none;" id="myDiv" class="animate-bottom">
       <% if(usernew) { %>
       <div
-        style="background: #b56400;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: example;animation-duration: 6s;animation-fill-mode: forwards;">
+        style="background: #b56400;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
         <a>مرحباً بك بــموقع الإسلام</a>
         <i class="fa-solid fa-hand-wave" aria-hidden="true"
           style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
-        <a style="font-size: 12px;">يتم عرضها عند دخولك لأول مره للموقع</a>
       </div>
       <% } %>
       <%- include('./partials/menu.ejs') %>
@@ -92,7 +99,7 @@
               </script>
             </div>
           </div>
-          <div class="card">
+          <div class="card" id="lastupdateid">
             <div class="icon">
               <i class="fa-duotone fa-newspaper" aria-hidden="true"></i>
             </div>
@@ -112,11 +119,11 @@
               <i class="fa-duotone fa-comments" aria-hidden="true"></i>
             </div>
             <div class="info">
-              <h3>تعليقات المستخدمين</h3>
+              <h3>تعليقات المستخدمين (<%= comments.length %>)</h3>
               <div class="lastupdate">
                 <div id="inner">
                   <% comments.forEach(comments=> { %>
-                  <div><%= comments.comment %></div>
+                  <div><%= comments.user %> :<br><%= comments.comment %></div>
                   <% }) %>
                 </div>
               </div>
