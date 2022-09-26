@@ -31,37 +31,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, `./www/public`)))
 
 
-app.get(`/alquran`, function (req, res) {
-  res.render(`alquran`)
-})
-app.get(`/arkan-aleman`, function (req, res) {
-  res.render(`arkan-aleman`)
-})
-app.get(`/arkan-aleslam`, function (req, res) {
-  res.render(`arkan-aleslam`)
-})
-app.get(`/ahadeth`, function (req, res) {
-  res.render(`ahadeth`)
-})
-app.get(`/stories`, function (req, res) {
-  res.render(`stories`)
-})
-app.get(`/masba7a`, function (req, res) {
-  res.render(`masba7a`)
-})
-app.get(`/news`, function (req, res) {
-  res.render(`news`)
-})
-app.get(`/ablution`, function (req, res) {
-  res.render(`ablution`)
-})
-app.get(`/prayer`, function (req, res) {
-  res.render(`prayer`)
-})
-app.get(`/download`, function (req, res) {
-  res.render(`download`)
-})
-
 app.get(`/`, async function (req, res) {
   let Updates = await require('./models/Updates').find({})
   if (Updates[0].Updates.length == 0) Updates[0].Updates = [`لا يوجد تحديثات`]
@@ -115,7 +84,10 @@ app.get(`/pillars-faith`, async function (req, res) {
   res.render(`pillars-faith`)
 })
 app.get(`/ahadeth`, async function (req, res) {
-  res.render(`ahadeth`)
+  let Ahadeth = await require('./models/Ahadeth').find({})
+  res.render(`ahadeth`, {
+    ahadeth: Ahadeth[0].Ahadeth,
+  })
 })
 
 

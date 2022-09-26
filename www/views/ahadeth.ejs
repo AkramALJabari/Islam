@@ -5,6 +5,23 @@
     <title>موقع الإسلام | أحاديث نبويه</title>
     <link rel="stylesheet" href="../css/home.css">
     <%- include('./partials/head.ejs') %>
+    <style>
+      .hadeth {
+        font-size: 1.50rem !important;
+        font-weight: 600;
+        margin-top: 40px;
+      }
+
+      .hadeth>span {
+        color: #b56400;
+      }
+
+      hr {
+        border: 3px solid #7a4400;
+        border-radius: 10px;
+        margin: 20px 0 20px 0;
+      }
+    </style>
   </head>
 
   <body onload="myFunction()">
@@ -20,7 +37,12 @@
             </div>
             <div class="info">
               <h3>أحاديث نبويه</h3>
-              
+              <div class="hadeth">
+                <% ahadeth.forEach(ah => { %>
+                <%= ah.a %><br><span><%= ah.b %></span>
+                <hr>
+                <% }) %>
+              </div>
             </div>
           </div>
         </div>
