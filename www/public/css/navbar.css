@@ -83,10 +83,6 @@
   direction: rtl;
 }
 
-.sidebar.close .nav-links {
-  overflow: visible
-}
-
 .sidebar .nav-links::-webkit-scrollbar {
   display: none
 }
@@ -237,7 +233,8 @@
 }
 
 .sidebar.close .profile-details {
-  width: 78px
+  width: 78px;
+  background-color: #b56400;
 }
 
 .sidebar .profile-details .profile-content {

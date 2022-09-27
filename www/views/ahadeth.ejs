@@ -21,12 +21,37 @@
         border-radius: 10px;
         margin: 20px 0 20px 0;
       }
+
+      @keyframes leftdiv {
+        0% {
+          left: -400px;
+        }
+
+        20% {
+          left: -40px;
+        }
+
+        80% {
+          left: -40px;
+        }
+
+        100% {
+          left: -400px;
+        }
+      }
     </style>
   </head>
 
   <body onload="myFunction()">
     <%- include('./partials/loading.ejs') %>
     <div style="display:none;" id="myDiv" class="animate-bottom">
+      <div
+        style="background: #b56400;width: 400px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 10s;animation-fill-mode: forwards;z-index: 999;">
+        <a>إذ حصلت على خطأ في الأحاديث</a>
+        <a href="https://web.facebook.com/Akram.M.AlJabari" target="_blank" style="color: white">تواصل مع مالك الموقع</a>
+        <i class="fa-duotone fa-circle-exclamation" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 327px;"></i>
+      </div>
       <%- include('./partials/menu.ejs') %>
       <%- include('./partials/navbar.ejs') %>
       <section class="cards nbw" id="services" style="padding-bottom: 50px;">
@@ -42,12 +67,14 @@
                 <%= ah.a %><br><span><%= ah.b %></span>
                 <hr>
                 <% }) %>
+                <span>قريبًا المزيد من الأحاديث ...</span>
               </div>
             </div>
           </div>
         </div>
       </section>
       <script src="./js/main.js" type="text/javascript"></script>
+      
     </div>
   </body>
 
