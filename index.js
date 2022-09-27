@@ -110,7 +110,7 @@ app.post(`/comments`, async function (req, res) {
       webhookClient.send({
         embeds: [new EmbedBuilder()
           .setTitle(`Log Sending Comments To Islam Site`)
-          .setURL(`https://www.islam.ml/comments`)
+          .setURL(`https://www.islam-site.ml/comments`)
           .setColor(`#b56400`)
           .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.comment}\n\nError :\n\`\`\`${err}\`\`\``)
         ]
@@ -125,7 +125,7 @@ app.post(`/comments`, async function (req, res) {
     webhookClient.send({
       embeds: [new EmbedBuilder()
         .setTitle(`Log Sending Comments To Islam Site`)
-        .setURL(`https://www.islam.ml/comments`)
+        .setURL(`https://www.islam-site.ml/comments`)
         .setColor(`#b56400`)
         .setDescription(`حالة الإرسال : تم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.comment}`)
       ]
