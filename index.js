@@ -89,6 +89,12 @@ app.get(`/ahadeth`, async function (req, res) {
     ahadeth: Ahadeth[0].Ahadeth,
   })
 })
+app.get(`/holy-quran`, async function (req, res) {
+  let Quran = await require('./models/Quran').find({})
+  res.render(`holy-quran`, {
+    quran: Quran[0].Quran,
+  })
+})
 
 
 app.post(`/comments`, async function (req, res) {

@@ -64,7 +64,7 @@
   transition: 0.7s ease;
 }
 
-.card:hover {
+.card-hover:hover {
   transform: scale(1.1);
 }
 
