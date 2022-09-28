@@ -134,7 +134,9 @@ app.post(`/comments`, async function (req, res) {
 })
 
 
-
+app.get('*', function (req, res) {
+  res.status(404).render(`404`)
+});
 app.listen(8080, () => {
   console.log(`Islam site is ready!`)
 })
