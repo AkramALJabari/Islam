@@ -83,6 +83,10 @@
   direction: rtl;
 }
 
+.sidebar.close .nav-links {
+  overflow: visible
+}
+
 .sidebar .nav-links::-webkit-scrollbar {
   display: none
 }
