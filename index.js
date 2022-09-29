@@ -31,10 +31,10 @@ app.get(`/`, async function(req, res) {
   let Updates = await require('./models/Updates').find({})
   if (Updates[0].Updates.length == 0) Updates[0].Updates = [`لا يوجد تحديثات`]
   let Comments = await require('./models/Comments').find({})
+  let Users_Count_Fetch = await require('./models/Users_Count').find({})
   fetch('https://api.ipify.org/?format=json')
     .then((response) => response.json())
     .then(async (data) => {
-      let Users_Count_Fetch = await require('./models/Users_Count').find({})
       if (!Users_Count_Fetch[0].Users.includes(data.ip)) {
         require('./models/Users_Count').updateOne({ ID: `1` }, { $push: { Users: data.ip } }, function(err) { })
       }
