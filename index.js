@@ -83,6 +83,9 @@ app.get(`/quran`, async function(req, res) {
     quran: Quran[0].Quran,
   })
 })
+app.get(`/googlef317b3b1d8c2a91a.html`, function (req, res) {
+  res.render(`googlef317b3b1d8c2a91a`)
+})
 
 
 app.post(`/comments`, async function(req, res) {
