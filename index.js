@@ -27,7 +27,21 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, `./www/public`)))
 
 
-app.get(`/`, async function(req, res) {
+app.get(`/googlef317b3b1d8c2a91a.html`, function (req, res) {
+  res.render(`googlef317b3b1d8c2a91a`)
+})
+app.get(`/robots.txt`, function (req, res) {
+  res.type('text/plain');
+  res.send(`User-agent: Mediapartners-Google
+Disallow: 
+
+User-agent: *
+Disallow: /search
+Allow: /
+
+Sitemap: https://www.islam-site.ml/sitemap.xml`);
+})
+app.get(`/`, async function (req, res) {
   let Updates = await require('./models/Updates').find({})
   if (Updates[0].Updates.length == 0) Updates[0].Updates = [`لا يوجد تحديثات`]
   let Comments = await require('./models/Comments').find({})
@@ -36,7 +50,7 @@ app.get(`/`, async function(req, res) {
     .then((response) => response.json())
     .then(async (data) => {
       if (!Users_Count_Fetch[0].Users.includes(data.ip)) {
-        require('./models/Users_Count').updateOne({ ID: `1` }, { $push: { Users: data.ip } }, function(err) { })
+        require('./models/Users_Count').updateOne({ ID: `1` }, { $push: { Users: data.ip } }, function (err) { })
       }
     });
   res.render(`index`, {
@@ -45,10 +59,10 @@ app.get(`/`, async function(req, res) {
     comments: Comments[0].Comments,
   })
 })
-app.get(`/facebook`, async function(req, res) {
+app.get(`/facebook`, async function (req, res) {
   res.redirect(`https://web.facebook.com/profile.php?id=100086027746081`)
 })
-app.get(`/comments`, async function(req, res) {
+app.get(`/comments`, async function (req, res) {
   let Comments = await require('./models/Comments').find({})
   res.render(`comments`, {
     comments: Comments[0].Comments,
@@ -56,42 +70,39 @@ app.get(`/comments`, async function(req, res) {
     err: false
   })
 })
-app.get(`/masba7a`, async function(req, res) {
+app.get(`/masba7a`, async function (req, res) {
   res.render(`masba7a`)
 })
-app.get(`/prophets-stories`, async function(req, res) {
+app.get(`/prophets-stories`, async function (req, res) {
   res.render(`prophets-stories`)
 })
-app.get(`/prayer-timings`, async function(req, res) {
+app.get(`/prayer-timings`, async function (req, res) {
   res.render(`prayer-timings`)
 })
-app.get(`/pillars-islam`, async function(req, res) {
+app.get(`/pillars-islam`, async function (req, res) {
   res.render(`pillars-islam`)
 })
-app.get(`/pillars-faith`, async function(req, res) {
+app.get(`/pillars-faith`, async function (req, res) {
   res.render(`pillars-faith`)
 })
-app.get(`/ahadeth`, async function(req, res) {
+app.get(`/ahadeth`, async function (req, res) {
   let Ahadeth = await require('./models/Ahadeth').find({})
   res.render(`ahadeth`, {
     ahadeth: Ahadeth[0].Ahadeth,
   })
 })
-app.get(`/quran`, async function(req, res) {
+app.get(`/quran`, async function (req, res) {
   let Quran = await require('./models/Quran').find({})
   res.render(`quran`, {
     quran: Quran[0].Quran,
   })
 })
-app.get(`/googlef317b3b1d8c2a91a.html`, function (req, res) {
-  res.render(`googlef317b3b1d8c2a91a`)
-})
 
 
-app.post(`/comments`, async function(req, res) {
+app.post(`/comments`, async function (req, res) {
   let Comments = await require('./models/Comments').find({})
   const webhookClient = new WebhookClient({ id: process.env.webhookId, token: process.env.webhookToken });
-  require('./models/Comments').updateOne({ ID: `1` }, { $push: { Comments: { user: req.body.name, email: req.body.email, comment: req.body.comment } } }, function(err) {
+  require('./models/Comments').updateOne({ ID: `1` }, { $push: { Comments: { user: req.body.name, email: req.body.email, comment: req.body.comment } } }, function (err) {
     if (err) {
       res.render(`comments`, {
         comments: Comments[0].Comments,
@@ -125,7 +136,7 @@ app.post(`/comments`, async function(req, res) {
 })
 
 
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
   res.status(404).render(`404`)
 });
 app.listen(8080, () => {
