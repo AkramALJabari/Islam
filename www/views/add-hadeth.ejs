@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>موقع الإسلام | إضافة حديث للموقع</title>
+    <title>موقع الإسلام | إضافة حديث نبوي للموقع</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="../css/home.css">
     <%- include('./partials/head.ejs') %>
@@ -56,6 +56,7 @@
         <div class="notification" style="background: green;">
           <div>
             <a>تمت العمليه بنجاح</a>
+            <a>سوف يتم مراجعة الحديث والتأكد منه</a>
           </div>
           <i class="fa-solid fa-badge-check" aria-hidden="true"></i>
         </div>
@@ -78,15 +79,15 @@
               <i class="fa-duotone fa-circle-plus" aria-hidden="true"></i>
             </div>
             <div class="info">
-              <h3>إضافة حديث</h3>
+              <h3>إضافة حديث نبوي</h3>
               <form action="/add-hadeth" method="POST">
                 <input type="text" name="name" placeholder="إسمك" oninvalid="this.setCustomValidity('أدخل إسمك هنا!')"
                   oninput="this.setCustomValidity('')" title="أدخل إسمك هنا!" required>
                 <input type="email" name="email" placeholder="البريد الإلكتروني"
                   oninvalid="this.setCustomValidity('أدخل البريد الإلكتروني هنا!')" oninput="this.setCustomValidity('')"
                   title="أدخل البريد الإلكتروني هنا!" required>
-                <textarea name="hadeth" placeholder="الحديث" oninvalid="this.setCustomValidity('أدخل الحديث هنا!')"
-                  oninput="this.setCustomValidity('')" title="أدخل الحديث هنا!" required></textarea>
+                <textarea name="hadeth" placeholder="الحديث النبوي" oninvalid="this.setCustomValidity('أدخل الحديث النبوي هنا!')"
+                  oninput="this.setCustomValidity('')" title="أدخل الحديث النبوي هنا!" required></textarea>
                 <button class="main-btn" type="submit" style="width: 30%;margin: 8px 0;"
                   onclick="myFunctionFormRequire()">إرسال</button>
               </form>

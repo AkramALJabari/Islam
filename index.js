@@ -116,12 +116,11 @@ app.post(`/comments`, async function (req, res) {
         err: true
       })
       webhookClient.send({
-        embeds: [new EmbedBuilder()
-          .setTitle(`Log Sending Comments To Islam Site`)
+        content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
+          .setTitle(`Log __Sending Comments__ To Islam Site`)
           .setURL(`https://www.islam-site.ml/comments`)
           .setColor(`#b56400`)
-          .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.comment}\n\nError :\n\`\`\`${err}\`\`\``)
-        ]
+          .setDescription(`حالة الإرسال : لم يتم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.comment}\n\nError :\n\`\`\`${err}\`\`\``)]
       });
     }
     Comments[0].Comments.push({ user: req.body.name, comment: req.body.comment })
@@ -131,13 +130,33 @@ app.post(`/comments`, async function (req, res) {
       err: false
     })
     webhookClient.send({
-      embeds: [new EmbedBuilder()
-        .setTitle(`Log Sending Comments To Islam Site`)
+      content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
+        .setTitle(`Log __Sending Comments__ To Islam Site`)
         .setURL(`https://www.islam-site.ml/comments`)
         .setColor(`#b56400`)
         .setDescription(`حالة الإرسال : تم الإرسال\nالإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالتعليق :\n${req.body.comment}`)
       ]
     });
+  })
+})
+app.post(`/add-hadeth`, async function (req, res) {
+  const webhookClient = new WebhookClient({ id: process.env.webhookId, token: process.env.webhookToken });
+  webhookClient.send({
+    content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
+      .setTitle(`Log __Add-Hadeth__ To Islam Site`)
+      .setURL(`https://www.islam-site.ml/add-hadeth`)
+      .setColor(`#b56400`)
+      .setDescription(`الإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالحديث :\n${req.body.hadeth}`)]
+  }).then(m => {
+    res.render(`add-hadeth`, {
+      done: true,
+      err: false
+    })
+  }).catch(err => {
+    res.render(`add-hadeth`, {
+      done: false,
+      err: true
+    })
   })
 })
 
