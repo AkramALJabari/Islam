@@ -86,16 +86,19 @@ app.get(`/pillars-faith`, async function (req, res) {
   res.render(`pillars-faith`)
 })
 app.get(`/ahadeth`, async function (req, res) {
-  let Ahadeth = await require('./models/Ahadeth').find({})
+  let Ahadeth = await require('./www/public/db/ahadeth.json')
   res.render(`ahadeth`, {
-    ahadeth: Ahadeth[0].Ahadeth,
+    ahadeth: Ahadeth,
   })
 })
 app.get(`/quran`, async function (req, res) {
-  let Quran = await require('./models/Quran').find({})
+  let Quran = await require('./www/public/db/quran.json')
   res.render(`quran`, {
-    quran: Quran[0].Quran,
+    quran: Quran,
   })
+})
+app.get(`/add-hadeth`, async function (req, res) {
+  res.render(`add-hadeth`)
 })
 
 

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>موقع الإسلام | تعليقات المستخدمين</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <%- include('./partials/head.ejs') %>
+    <style>
+      .comments {
+        max-height: 400px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #inner {
+        display: flex;
+        flex-direction: column-reverse;
+        flex-grow: 1;
+      }
+
+      .comments #inner div {
+        background-color: #b56400;
+        color: white;
+        font-weight: 700;
+        border-radius: 5px;
+        padding: 3px 15px 5px;
+        box-shadow: 0 0 1px rgb(0 0 0 / 12%), 0 0 1px rgb(0 0 0 / 24%);
+        font-size: 15px;
+        margin-bottom: 5px;
+        white-space: pre-line;
+        word-wrap: break-word;
+      }
+
+
+      input[type=text],
+      input[type=email],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #b56400;
+        border-radius: 10px;
+        box-sizing: border-box;
+        direction: rtl;
+        height: 50px;
+        background-color: #fff;
+        color: #000;
+        font-weight: 900;
+      }
+
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #b56400;
+        border-radius: 10px;
+        box-sizing: border-box;
+        direction: rtl;
+        height: 200px;
+        background-color: #fff;
+        color: #000;
+        font-weight: 900;
+      }
+
+      @keyframes leftdiv {
+        0% {
+          left: -360px;
+        }
+
+        20% {
+          left: -40px;
+        }
+
+        80% {
+          left: -40px;
+        }
+
+        100% {
+          left: -360px;
+        }
+      }
+    </style>
+  </head>
+
+  <body onload="myFunction()">
+    <%- include('./partials/loading.ejs') %>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+      <div id="errordiv"
+        style="background: red;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;display: none;">
+        <a>يجب تعبأة جميع المعلومات<br>بشكل صحيح</a>
+        <i class="fa-solid fa-seal-exclamation" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      </div>
+      <% if(done){ %>
+      <div
+        style="background: green;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
+        <a>تمت العمليه بنجاح</a>
+        <i class="fa-solid fa-badge-check" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      </div>
+      <% } %>
+      <% if(err){ %>
+      <div
+        style="background: red;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
+        <a>حصل خطأ اثناء تنفيذ العمليه</a>
+        <i class="fa-solid fa-seal-exclamation" aria-hidden="true"
+          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      </div>
+      <% } %>
+      <%- include('./partials/menu.ejs') %>
+      <%- include('./partials/navbar.ejs') %>
+      <section class="cards nbw" id="services" style="padding-bottom: 50px;">
+        <div class="content" style="flex-direction: column;align-items: center;padding-top: 50px">
+          <div class="card">
+            <div class="icon">
+              <i class="fa-solid fa-comment-plus" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>إضافة تعليق</h3>
+              <form action="/comments" method="POST">
+                <input type="text" name="name" placeholder="إسمك" oninvalid="this.setCustomValidity('أدخل إسمك هنا!')"
+                  oninput="this.setCustomValidity('')" title="أدخل إسمك هنا!" required>
+                <input type="email" name="email" placeholder="البريد الإلكتروني"
+                  oninvalid="this.setCustomValidity('أدخل البريد الإلكتروني هنا!')" oninput="this.setCustomValidity('')"
+                  title="أدخل البريد الإلكتروني هنا!" required>
+                <textarea name="comment" placeholder="التعليق" oninvalid="this.setCustomValidity('أدخل التعليق هنا!')"
+                  oninput="this.setCustomValidity('')" title="أدخل التعليق هنا!" required></textarea>
+                <button class="main-btn" type="submit" style="width: 30%;margin: 8px 0;"
+                  onclick="myFunctionFormRequire()">إرسال</button>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon">
+              <i class="fa-duotone fa-comments" aria-hidden="true"></i>
+            </div>
+            <div class="info">
+              <h3>تعليقات المستخدمين (<%= comments.length %>)</h3>
+              <div class="comments">
+                <div id="inner">
+                  <% comments.forEach(comment => { %>
+                  <div><%= comment.user %> :<br><%= comment.comment %></div>
+                  <% }) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="./js/main.js" type="text/javascript"></script>
+      <script>
+        function myFunctionFormRequire() {
+          let name = document.getElementsByName("name")[0].value;
+          let email = document.getElementsByName("email")[0].value;
+          let comment = document.getElementsByName("comment")[0].value;
+          let errordiv = document.getElementById("errordiv")
+          if (!name || !email || !comment) {
+            if (errordiv.style.display !== "flex") {
+              console.log(name)
+              errordiv.style.display = "flex";
+              setTimeout(function () {
+                errordiv.style.display = "none";
+              }, 6000)
+            }
+          }
+        }
+      </script>
+    </div>
+  </body>
+
+</html>
