@@ -83,13 +83,13 @@
               <div id="counter2" style="display: none;"><%= users_count %></div>
               <script>
                 setTimeout(function () {
-                  let counts = setInterval(updated, 30);
+                  let counts = setInterval(updated, 20);
                   let upto = 0;
                   function updated() {
                     var count = document.getElementById("counter");
                     var count2 = document.getElementById("counter2");
                     count.innerHTML = ++upto + ` +`;
-                    if (upto === Number(count2.innerHTML) + 10) {
+                    if (upto === Number(count2.innerHTML)/* + 10*/) {
                       clearInterval(counts);
                     }
                   }
