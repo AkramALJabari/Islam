@@ -66,52 +66,36 @@
         color: #000;
         font-weight: 900;
       }
-
-      @keyframes leftdiv {
-        0% {
-          left: -360px;
-        }
-
-        20% {
-          left: -40px;
-        }
-
-        80% {
-          left: -40px;
-        }
-
-        100% {
-          left: -360px;
-        }
-      }
     </style>
   </head>
 
   <body onload="myFunction()">
     <%- include('./partials/loading.ejs') %>
     <div style="display:none;" id="myDiv" class="animate-bottom">
-      <div id="errordiv"
-        style="background: red;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;display: none;">
-        <a>يجب تعبأة جميع المعلومات<br>بشكل صحيح</a>
-        <i class="fa-solid fa-seal-exclamation" aria-hidden="true"
-          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      <div class="notifications">
+        <div id="errordiv" class="notification" style="background: red;display: none;">
+          <div>
+            <a>يجب تعبأة جميع المعلومات بشكل صحيح</a>
+          </div>
+          <i class="fa-solid fa-seal-exclamation" aria-hidden="true"></i>
+        </div>
+        <% if(done){ %>
+        <div class="notification" style="background: green;">
+          <div>
+            <a>تمت العمليه بنجاح</a>
+          </div>
+          <i class="fa-solid fa-badge-check" aria-hidden="true"></i>
+        </div>
+        <% } %>
+        <% if(err){ %>
+        <div class="notification" style="background: red;">
+          <div>
+            <a>حصل خطأ اثناء تنفيذ العمليه</a>
+          </div>
+          <i class="fa-solid fa-seal-exclamation" aria-hidden="true"></i>
+        </div>
+        <% } %>
       </div>
-      <% if(done){ %>
-      <div
-        style="background: green;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
-        <a>تمت العمليه بنجاح</a>
-        <i class="fa-solid fa-badge-check" aria-hidden="true"
-          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
-      </div>
-      <% } %>
-      <% if(err){ %>
-      <div
-        style="background: red;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
-        <a>حصل خطأ اثناء تنفيذ العمليه</a>
-        <i class="fa-solid fa-seal-exclamation" aria-hidden="true"
-          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
-      </div>
-      <% } %>
       <%- include('./partials/menu.ejs') %>
       <%- include('./partials/navbar.ejs') %>
       <section class="cards nbw" id="services" style="padding-bottom: 50px;">

@@ -71,42 +71,26 @@
       audio::-webkit-media-controls-play-button:hover {
         background-color: #7a4400;
       }
-
-      @keyframes leftdiv {
-        0% {
-          left: -460px;
-        }
-
-        20% {
-          left: -40px;
-        }
-
-        80% {
-          left: -40px;
-        }
-
-        100% {
-          left: -460px;
-        }
-      }
     </style>
   </head>
 
   <body onload="myFunction()">
     <%- include('./partials/loading.ejs') %>
     <div style="display:none;" id="myDiv" class="animate-bottom">
-      <div
-        style="background: #b56400;width: 456px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 15s;animation-fill-mode: forwards;z-index: 999;">
-        <a>يجب عليك الإنتظار حتى يتم تحميل<br>الملفات</a>
-        <i class="fa-duotone fa-loader" aria-hidden="true"
-          style="font-size: 40px;position: fixed;display: flex;padding-left: 398px;"></i>
-      </div>
-      <div
-        style="background: #b56400;width: 456px;height: 77px;margin-top: 169px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 20s;animation-fill-mode: forwards;z-index: 999;">
-        <a>إذ واجهت مشكله في الملفات الصوتيه</a>
-        <a href="https://web.facebook.com/Akram.M.AlJabari" target="_blank" style="color: white">تواصل مع مالك الموقع</a>
-        <i class="fa-duotone fa-circle-exclamation" aria-hidden="true"
-          style="font-size: 40px;position: fixed;display: flex;padding-left: 398px;"></i>
+      <div class="notifications">
+        <div class="notification">
+          <div>
+            <a>يجب عليك الإنتظار حتى يتم تحميل الملفات</a>
+          </div>
+          <i class="fa-duotone fa-loader" aria-hidden="true"></i>
+        </div>
+        <div class="notification">
+          <div>
+            <a>إذ واجهت مشكله في الملفات الصوتيه</a>
+            <a href="https://web.facebook.com/Akram.M.AlJabari" target="_blank" style="color: white">تواصل مع مالك الموقع</a>
+          </div>
+          <i class="fa-duotone fa-circle-exclamation" aria-hidden="true"></i>
+        </div>
       </div>
       <%- include('./partials/menu.ejs') %>
       <%- include('./partials/navbar.ejs') %>

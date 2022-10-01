@@ -31,35 +31,19 @@
         white-space: pre-line;
         word-wrap: break-word;
       }
-
-      @keyframes leftdiv {
-        0% {
-          left: -360px;
-        }
-
-        20% {
-          left: -40px;
-        }
-
-        80% {
-          left: -40px;
-        }
-
-        100% {
-          left: -360px;
-        }
-      }
     </style>
   </head>
 
   <body onload="myFunction()">
     <%- include('./partials/loading.ejs') %>
     <div style="display:none;" id="myDiv" class="animate-bottom">
-      <div
-        style="background: #b56400;width: 359px;height: 77px;margin-top: 62px;position: fixed;color: white;font-weight: 700;font-size: 20px;display: flex;align-items: center;border-radius: 0 20px 20px 0;justify-content: center;flex-wrap: wrap;animation-name: leftdiv;animation-duration: 6s;animation-fill-mode: forwards;z-index: 999;">
-        <a>مرحباً بك بــموقع الإسلام</a>
-        <i class="fa-solid fa-hand-wave" aria-hidden="true"
-          style="font-size: 40px;position: fixed;display: flex;padding-left: 287px;"></i>
+      <div class="notifications">
+        <div class="notification">
+          <div>
+            <a>مرحباً بك بــموقع الإسلام</a>
+          </div>
+          <i class="fa-solid fa-hand-wave" aria-hidden="true"></i>
+        </div>
       </div>
       <%- include('./partials/menu.ejs') %>
       <%- include('./partials/navbar.ejs') %>

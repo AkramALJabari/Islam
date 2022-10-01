@@ -98,7 +98,10 @@ app.get(`/quran`, async function (req, res) {
   })
 })
 app.get(`/add-hadeth`, async function (req, res) {
-  res.render(`add-hadeth`)
+  res.render(`add-hadeth`, {
+    done: false,
+    err: false,
+  })
 })
 
 
