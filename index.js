@@ -103,6 +103,12 @@ app.get(`/add-hadeth`, async function (req, res) {
     err: false,
   })
 })
+app.get(`/Biography-of-the-Prophet`, async function (req, res) {
+  let Biography = await require('./www/public/db/biography.json')
+  res.render(`Biography-of-the-Prophet`, {
+    biography: Biography,
+  })
+})
 
 
 app.post(`/comments`, async function (req, res) {
