@@ -200,6 +200,7 @@ button:hover {
 .notifications {
   margin-top: 62px;
   position: fixed;
+  z-index: 9;
 }
 
 .notification {
