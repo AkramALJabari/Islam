@@ -74,7 +74,18 @@ app.get(`/masba7a`, async function (req, res) {
   res.render(`masba7a`)
 })
 app.get(`/prophets-stories`, async function (req, res) {
-  res.render(`prophets-stories`)
+  let stories = await require('./www/public/db/prophets-stories.json')
+  res.render(`prophets-stories`, {
+    stories,
+    storiePage: false,
+  })
+})
+app.get(`/:namestories`, async function (req, res) {
+  let stories = await require('./www/public/db/prophets-stories.json')
+  res.render(`prophets-stories`, {
+    stories,
+    storiePage: req.params.namestories,
+  })
 })
 app.get(`/prayer-timings`, async function (req, res) {
   res.render(`prayer-timings`)
