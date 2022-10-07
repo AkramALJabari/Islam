@@ -80,7 +80,7 @@ app.get(`/prophets-stories`, async function (req, res) {
     storiePage: false,
   })
 })
-app.get(`/:namestories`, async function (req, res) {
+app.get(`/prophets-stories=:namestories`, async function (req, res) {
   let stories = await require('./www/public/db/prophets-stories.json')
   res.render(`prophets-stories`, {
     stories,
