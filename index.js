@@ -12,6 +12,7 @@ const MemoryStore = require("memorystore")(session);
 const bodyParser = require("body-parser");
 const fs = require(`fs`);
 const fetch = require(`node-fetch`);
+const { convertNumber } = require("mr.convert");
 
 
 mongoose.connect(process.env.mongodb, {
@@ -57,6 +58,7 @@ app.get(`/`, async function (req, res) {
     users_count: Users_Count_Fetch[0].Users.length,
     updates: Updates[0].Updates,
     comments: Comments[0].Comments,
+    convertNumber,
   })
 })
 app.get(`/facebook`, async function (req, res) {
@@ -67,7 +69,8 @@ app.get(`/comments`, async function (req, res) {
   res.render(`comments`, {
     comments: Comments[0].Comments,
     done: false,
-    err: false
+    err: false,
+    convertNumber,
   })
 })
 app.get(`/masba7a`, async function (req, res) {
@@ -130,7 +133,8 @@ app.post(`/comments`, async function (req, res) {
       res.render(`comments`, {
         comments: Comments[0].Comments,
         done: false,
-        err: true
+        err: true,
+        convertNumber,
       })
       webhookClient.send({
         content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
@@ -144,7 +148,8 @@ app.post(`/comments`, async function (req, res) {
     res.render(`comments`, {
       comments: Comments[0].Comments,
       done: true,
-      err: false
+      err: false,
+      convertNumber,
     })
     webhookClient.send({
       content: `<@608224231322419202>`, embeds: [new EmbedBuilder()

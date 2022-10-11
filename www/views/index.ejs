@@ -67,7 +67,7 @@
               <div id="counter2" style="display: none;"><%= users_count %></div>
               <script>
                 setTimeout(function () {
-                  let counts = setInterval(updated, 10);
+                  let counts = setInterval(updated, 0);
                   let upto = 0;
                   function updated() {
                     var count = document.getElementById("counter");
@@ -101,7 +101,7 @@
               <i class="fa-duotone fa-comments" aria-hidden="true"></i>
             </div>
             <div class="info">
-              <h3>تعليقات المستخدمين (<%= comments.length %>)</h3>
+              <h3>تعليقات المستخدمين (<%= convertNumber(comments.length) %>)</h3>
               <div class="lastupdate">
                 <div id="inner">
                   <% comments.forEach(comments=> { %>

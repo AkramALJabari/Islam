@@ -124,7 +124,7 @@
               <i class="fa-duotone fa-comments" aria-hidden="true"></i>
             </div>
             <div class="info">
-              <h3>تعليقات المستخدمين (<%= comments.length %>)</h3>
+              <h3>تعليقات المستخدمين (<%= convertNumber(comments.length) %>)</h3>
               <div class="comments">
                 <div id="inner">
                   <% comments.forEach(comment => { %>
