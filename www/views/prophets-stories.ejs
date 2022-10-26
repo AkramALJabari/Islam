@@ -10,10 +10,16 @@
         font-size: 1.50rem !important;
         font-weight: 600;
         margin-top: 40px;
+        direction: rtl;
       }
 
       .stories>span {
         color: #b56400;
+      }
+
+      .stories>ul {
+        color: #b56400;
+        list-style: inside;
       }
 
       hr {
@@ -45,7 +51,8 @@
                 <a class="main-btn" style="font-size: 0.6em;margin-bottom: 0;cursor: no-drop;">عرض
                   المزيد</a>
                 <% }else{ %>
-                <a href="/prophets-stories=<%= storie.name %>" class="main-btn" style="font-size: 0.6em;margin-bottom: 0;">عرض
+                <a href="/prophets-stories=<%= storie.name %>" class="main-btn"
+                  style="font-size: 0.6em;margin-bottom: 0;">عرض
                   المزيد</a>
                 <% } %>
                 <hr>
@@ -67,6 +74,7 @@
               </script>
               <div class="stories">
                 <% stories.forEach(storie => { %>
+
                 <% if(storie.name !== storiePage)return %>
                 <span><%= storie.stories1 %></span>
                 <% if(storie.stories2){ %>
@@ -77,6 +85,37 @@
                 <br><br>
                 <span><%= storie.stories3 %></span>
                 <% } %>
+                <ul>
+                  <% if(storie.li1){ %>
+                  <br><br>
+                  <li><%= storie.li1 %></li>
+                  <% } %>
+                  <% if(storie.li2){ %>
+                  <br><br>
+                  <li><%= storie.li2 %></li>
+                  <% } %>
+                  <% if(storie.li3){ %>
+                  <br><br>
+                  <li><%= storie.li3 %></li>
+                  <% } %>
+                  <% if(storie.li4){ %>
+                  <br><br>
+                  <li><%= storie.li4 %></li>
+                  <% } %>
+                  <% if(storie.li5){ %>
+                  <br><br>
+                  <li><%= storie.li5 %></li>
+                  <% } %>
+                  <% if(storie.li6){ %>
+                  <br><br>
+                  <li><%= storie.li6 %></li>
+                  <% } %>
+                  <% if(storie.li7){ %>
+                  <br><br>
+                  <li><%= storie.li7 %></li>
+                  <% } %>
+                </ul>
+
                 <% }) %>
                 <br><br>
                 <a href="/prophets-stories" class="main-btn" style="font-size: 0.7em;margin-bottom: 0;">الرجوع للخلف</a>
