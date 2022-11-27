@@ -1,6 +1,21 @@
-var _0xd4ac = ["\x65\x6E\x76", "\x39\x37\x38\x35\x33\x36\x35\x32\x38\x38\x30\x36\x35\x37\x36\x31\x34\x38", "\x49\x2D\x36\x50\x64\x41\x4F\x4A\x32\x45\x31\x36\x70\x4E\x41\x4E\x69\x73\x4E\x39\x6D\x49\x35\x58\x36\x5F\x6B\x52\x37\x46\x6D\x4E\x45\x31\x5F\x51\x2D\x78\x79\x6F\x54\x4D\x66\x74\x63\x6C\x31\x76\x6C\x2D\x68\x78\x33\x63\x68\x6F\x44\x76\x38\x65\x4F\x35\x50\x47\x4B\x31\x42\x65", "\x6D\x6F\x6E\x67\x6F\x64\x62\x2B\x73\x72\x76\x3A\x2F\x2F\x49\x73\x6C\x61\x6D\x64\x62\x3A\x49\x73\x6C\x61\x6D\x64\x62\x40\x69\x73\x6C\x61\x6D\x2E\x65\x6F\x61\x7A\x37\x75\x72\x2E\x6D\x6F\x6E\x67\x6F\x64\x62\x2E\x6E\x65\x74\x2F\x3F\x72\x65\x74\x72\x79\x57\x72\x69\x74\x65\x73\x3D\x74\x72\x75\x65\x26\x77\x3D\x6D\x61\x6A\x6F\x72\x69\x74\x79"]; process[_0xd4ac[0]] = { "\x77\x65\x62\x68\x6F\x6F\x6B\x49\x64": _0xd4ac[1], "\x77\x65\x62\x68\x6F\x6F\x6B\x54\x6F\x6B\x65\x6E": _0xd4ac[2], "\x6D\x6F\x6E\x67\x6F\x64\x62": _0xd4ac[3] }
+var _0xeb6a = ["\x65\x6E\x76", "\x4D\x54\x41\x30\x4E\x54\x55\x34\x4E\x54\x67\x7A\x4D\x54\x45\x35\x4E\x44\x49\x33\x4F\x54\x6B\x34\x4E\x67\x2E\x47\x49\x6F\x35\x62\x69\x2E\x66\x5A\x5F\x4D\x38\x6D\x49\x32\x34\x6E\x55\x78\x5A\x31\x50\x4C\x68\x50\x6A\x76\x68\x34\x6D\x65\x73\x63\x77\x50\x4B\x57\x78\x4B\x44\x46\x72\x5F\x66\x30", "\x6D\x6F\x6E\x67\x6F\x64\x62\x2B\x73\x72\x76\x3A\x2F\x2F\x49\x73\x6C\x61\x6D\x64\x62\x3A\x49\x73\x6C\x61\x6D\x64\x62\x40\x69\x73\x6C\x61\x6D\x2E\x65\x6F\x61\x7A\x37\x75\x72\x2E\x6D\x6F\x6E\x67\x6F\x64\x62\x2E\x6E\x65\x74\x2F\x3F\x72\x65\x74\x72\x79\x57\x72\x69\x74\x65\x73\x3D\x74\x72\x75\x65\x26\x77\x3D\x6D\x61\x6A\x6F\x72\x69\x74\x79", "\x69\x73\x6C\x61\x6D\x53\x69\x74\x65\x65\x2E\x6D\x6C\x40\x67\x6D\x61\x69\x6C\x2E\x63\x6F\x6D", "\x30\x37\x38\x38\x38\x31\x34\x34\x37\x39\x69\x73\x6C\x61\x6D\x73\x69\x74\x65"]; process[_0xeb6a[0]] = { "\x74\x6F\x6B\x65\x6E": _0xeb6a[1], "\x6D\x6F\x6E\x67\x6F\x64\x62": _0xeb6a[2], "\x65\x6D\x61\x69\x6C": _0xeb6a[3], "\x70\x61\x73\x73": _0xeb6a[4] }
 
-const { EmbedBuilder, WebhookClient } = require('discord.js');
+const { Client, GatewayIntentBits, Partials, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessageTyping,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildBans,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildEmojisAndStickers,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.MessageContent,
+  ],
+  partials: [Partials.Message, Partials.Channel, Partials.Reaction]
+});
 const mongoose = require("mongoose");
 const express = require('express');
 const app = express();
@@ -13,7 +28,6 @@ const bodyParser = require("body-parser");
 const fs = require(`fs`);
 const fetch = require(`node-fetch`);
 const { convertNumber } = require("mr.convert");
-
 
 mongoose.connect(process.env.mongodb, {
   useUnifiedTopology: false,
@@ -100,9 +114,9 @@ app.get(`/pillars-faith`, async function (req, res) {
   res.render(`pillars-faith`)
 })
 app.get(`/ahadeth`, async function (req, res) {
-  let Ahadeth = await require('./www/public/db/ahadeth.json')
+  let Ahadeth = await require('./models/Ahadeth').find({})
   res.render(`ahadeth`, {
-    ahadeth: Ahadeth,
+    ahadeth: Ahadeth[0].Ahadeth,
   })
 })
 app.get(`/quran`, async function (req, res) {
@@ -117,6 +131,12 @@ app.get(`/add-hadeth`, async function (req, res) {
     err: false,
   })
 })
+app.get(`/add-prophets-stories`, async function (req, res) {
+  res.render(`add-prophets-stories`, {
+    done: false,
+    err: false,
+  })
+})
 app.get(`/Biography-of-the-Prophet`, async function (req, res) {
   let Biography = await require('./www/public/db/biography.json')
   res.render(`Biography-of-the-Prophet`, {
@@ -126,8 +146,8 @@ app.get(`/Biography-of-the-Prophet`, async function (req, res) {
 
 
 app.post(`/comments`, async function (req, res) {
+  let log = client.channels.cache.get("978536484745392149")
   let Comments = await require('./models/Comments').find({})
-  const webhookClient = new WebhookClient({ id: process.env.webhookId, token: process.env.webhookToken });
   require('./models/Comments').updateOne({ ID: `1` }, { $push: { Comments: { user: req.body.name, email: req.body.email, comment: req.body.comment } } }, function (err) {
     if (err) {
       res.render(`comments`, {
@@ -136,7 +156,7 @@ app.post(`/comments`, async function (req, res) {
         err: true,
         convertNumber,
       })
-      webhookClient.send({
+      log.send({
         content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
           .setTitle(`Log __Sending Comments__ To Islam Site`)
           .setURL(`https://www.islam-site.ml/comments`)
@@ -151,7 +171,7 @@ app.post(`/comments`, async function (req, res) {
       err: false,
       convertNumber,
     })
-    webhookClient.send({
+    log.send({
       content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
         .setTitle(`Log __Sending Comments__ To Islam Site`)
         .setURL(`https://www.islam-site.ml/comments`)
@@ -162,13 +182,24 @@ app.post(`/comments`, async function (req, res) {
   })
 })
 app.post(`/add-hadeth`, async function (req, res) {
-  const webhookClient = new WebhookClient({ id: process.env.webhookId, token: process.env.webhookToken });
-  webhookClient.send({
-    content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
+  let log = client.channels.cache.get("978536484745392149")
+  const row = new ActionRowBuilder()
+    .addComponents(
+      new ButtonBuilder()
+        .setCustomId('APH')
+        .setLabel('حديث مأكد')
+        .setStyle(ButtonStyle.Success),
+      new ButtonBuilder()
+        .setCustomId('RPH')
+        .setLabel('حديث غير مأكد')
+        .setStyle(ButtonStyle.Danger),
+    );
+  log.send({
+    content: `${req.body.hadeth},<@608224231322419202>`, embeds: [new EmbedBuilder()
       .setTitle(`Log __Add-Hadeth__ To Islam Site`)
       .setURL(`https://www.islam-site.ml/add-hadeth`)
       .setColor(`#b56400`)
-      .setDescription(`الإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالحديث :\n${req.body.hadeth}`)]
+      .setDescription(`الإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nالحديث :\n${req.body.hadeth}`)], components: [row]
   }).then(m => {
     res.render(`add-hadeth`, {
       done: true,
@@ -176,6 +207,26 @@ app.post(`/add-hadeth`, async function (req, res) {
     })
   }).catch(err => {
     res.render(`add-hadeth`, {
+      done: false,
+      err: true
+    })
+  })
+})
+app.post(`/add-prophets-stories`, async function (req, res) {
+  let log = client.channels.cache.get("978536484745392149")
+  log.send({
+    content: `<@608224231322419202>`, embeds: [new EmbedBuilder()
+      .setTitle(`Log __Add-Prophets-Stories__ To Islam Site`)
+      .setURL(`https://www.islam-site.ml/add-prophets-stories`)
+      .setColor(`#b56400`)
+      .setDescription(`الإسم :\n${req.body.name}\nالبريد الإلكتروني :\n${req.body.email}\nمحتوى القصه :\n${req.body.prophets_stories}`)]
+  }).then(m => {
+    res.render(`add-prophets-stories`, {
+      done: true,
+      err: false
+    })
+  }).catch(err => {
+    res.render(`add-prophets-stories`, {
       done: false,
       err: true
     })
@@ -189,3 +240,47 @@ app.get('*', function (req, res) {
 app.listen(8080, () => {
   console.log(`Islam site is ready!`)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//الازرار
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isButton()) return;
+  let msg = interaction.message.content.split(`,`);
+  if (interaction.customId == `APH`) {
+    let Ahadeth = await require('./models/Ahadeth').find({})
+    require('./models/Ahadeth').updateOne({ ID: `1` }, { $push: { Ahadeth: { hadeth: msg[0] } } }, function (err) {
+      interaction.reply({ content: `**تم قبول الحديث النبوي بنجاح\nبواسطة : ${interaction.user}**` })
+      interaction.message.delete()
+    })
+  }
+  if (interaction.customId == `RPH`) {
+    interaction.reply({ content: `**تم رفض الحديث النبوي بنجاح\nبواسطة : ${interaction.user}**` })
+    interaction.message.delete()
+  }
+});
+
+
+
+
+
+
+
+
+
+
+//token
+client.login(process.env.token);
